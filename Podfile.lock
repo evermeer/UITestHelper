@@ -1,0 +1,20 @@
+PODS:
+  - UITestHelper (0.2.0):
+    - UITestHelper/Core (= 0.2.0)
+  - UITestHelper/App (0.2.0)
+  - UITestHelper/Core (0.2.0)
+
+DEPENDENCIES:
+  - UITestHelper (from `./`)
+  - UITestHelper/App (from `./`)
+
+EXTERNAL SOURCES:
+  UITestHelper:
+    :path: "./"
+
+SPEC CHECKSUMS:
+  UITestHelper: 8ecbdcd1249e2aeb03a2fe6b7675b294e34a99b8
+
+PODFILE CHECKSUM: 6ab9d8a6918a6b41f991aa0fe58b967d580da252
+
+COCOAPODS: 1.2.0
