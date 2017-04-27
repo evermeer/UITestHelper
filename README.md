@@ -7,15 +7,15 @@
 
 
 [![Version](https://img.shields.io/cocoapods/v/UITestHelper.svg?style=flat)](http://cocoadocs.org/docsets/UITestHelper)
-[![Language](https://img.shields.io/badge/language-swift 3-f48041.svg?style=flat)](https://developer.apple.com/swift)
+[![Language](https://img.shields.io/badge/language-swift%203-f48041.svg?style=flat)](https://developer.apple.com/swift)
 [![Platform](https://img.shields.io/cocoapods/p/UITestHelper.svg?style=flat)](http://cocoadocs.org/docsets/UITestHelper)
 [![License](https://img.shields.io/cocoapods/l/UITestHelper.svg?style=flat)](http://cocoadocs.org/docsets/UITestHelper)
 
 [![Git](https://img.shields.io/badge/GitHub-evermeer-blue.svg?style=flat)](https://github.com/evermeer)
 [![Twitter](https://img.shields.io/badge/twitter-@evermeer-blue.svg?style=flat)](http://twitter.com/evermeer)
-[![LinkedIn](https://img.shields.io/badge/linkedin-Edwin Vermeer-blue.svg?style=flat)](http://nl.linkedin.com/in/evermeer/en)
+[![LinkedIn](https://img.shields.io/badge/linkedin-Edwin%20Vermeer-blue.svg?style=flat)](http://nl.linkedin.com/in/evermeer/en)
 [![Website](https://img.shields.io/badge/website-evict.nl-blue.svg?style=flat)](http://evict.nl)
-[![eMail](https://img.shields.io/badge/email-edwin@evict.nl-blue.svg?style=flat)](mailto:edwin@evict.nl?SUBJECT=About UITestHelper)
+[![eMail](https://img.shields.io/badge/email-edwin@evict.nl-blue.svg?style=flat)](mailto:edwin@evict.nl?SUBJECT=About%20UITestHelper)
 
 # General information
 
