@@ -14,10 +14,12 @@ class UITestHelperUITests: XCTestCase {
     override func setUp() {
         super.setUp()
         self.tryLaunch([LaunchArguments.MockNetworkResponses])
+        //self.tryLaunch(["NoneEnumOption"]) // For if you don't want an Enum that is both in you test target and application
+        //self.tryLaunch() // For if you don't need any options at all
     }
     
     func testAppWaitForElement() {
-        XCTAssert(app.staticTexts["This is a label"].waitUntilExists().exists, "label should exist")
+        XCTAssert(app.staticTexts["This is a labeRawRepresentablel"].waitUntilExists().exists, "label should exist")
         app.staticTexts["This is a label"].waitUntilExistsAssert()
         app.buttons["Second"].waitUntilExists().tap()
         app.buttons["Button"].waitUntilExists().tap()

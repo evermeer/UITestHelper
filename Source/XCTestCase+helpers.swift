@@ -8,6 +8,13 @@
 import XCTest
 
 
+extension String : RawRepresentable {
+    public init?(rawValue: String) {
+        self = rawValue
+    }
+    public var rawValue: String { get { return self} }
+}
+
 /**
  Helper extension for various function to help with writing UI tests.
  */
@@ -47,13 +54,32 @@ public extension XCTestCase {
         sleep(3)
         
         app = XCUIApplication()
-        app.launchArguments = arguments.map { $0.rawValue as! String }
+        app.launchArguments = (arguments.map { $0.rawValue as! String })
         app.launch()
         sleep(3)
         if !app.exists && counter > 0 {
             tryLaunch(arguments, counter - 1)
         }
     }
+
+    /**
+     Try to force launch the application. This structure tries to ovecome the issues described at https://www.openradar.me/25548393 and https://forums.developer.apple.com/thread/15780
+     
+     - parameter timeout: The retry counter for trying to startup the app (Default is 10)
+     */
+    public func tryLaunch(_ counter: Int = 10) {
+        sleep(3)
+        XCUIApplication().terminate()
+        sleep(3)
+        
+        app = XCUIApplication()
+        app.launch()
+        sleep(3)
+        if !app.exists && counter > 0 {
+            tryLaunch(counter - 1)
+        }
+    }
+
     
     /**
      Are the tests run in the simulator or on a device.

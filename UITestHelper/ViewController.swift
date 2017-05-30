@@ -15,17 +15,15 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        // For if you want to react to parameters that are passed on from a UITest
         if isLaunchedWith(LaunchArguments.MockNetworkResponses) {
             
         }
+        if isLaunchedWith("NoneEnumOption") {
+            
+        }
     }
-
 
     @IBAction func showButtonTouchUpInside(_ sender: Any) {
         hideButton.isHidden = false
