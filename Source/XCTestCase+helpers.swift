@@ -98,4 +98,34 @@ public extension XCTestCase {
     public func isTablet() -> Bool {
         return UIDevice.current.userInterfaceIdiom != UIUserInterfaceIdiom.phone
     }
+
+    /**
+     Take a screenshot and attach it to the specified or a new activity
+     */
+    public func takeScreenshot(activity: XCTActivity, _ name: String = "Screenshot") {
+        let screen: XCUIScreen = XCUIScreen.main
+        let fullscreenshot: XCUIScreenshot = screen.screenshot()
+        let fullScreenshotAttachment: XCTAttachment = XCTAttachment(screenshot: fullscreenshot)
+        fullScreenshotAttachment.name = name
+        fullScreenshotAttachment.lifetime = .keepAlways
+        activity.add(fullScreenshotAttachment)
+    }
+    
+    /**
+     Take a screenshot and attach it to the specified or a new activity
+     */
+    public func takeScreenshot(groupName: String = "--- Screenshot ---", _ name: String = "Screenshot") {
+        group(groupName) { (activity) in
+            takeScreenshot(activity: activity, name)
+        }
+    }
+    
+    /**
+     A simple wrapper around creating an activity for grouping your test statements.
+     */
+    public func group(_ text: String = "Group", closure: (_ activity: XCTActivity)-> ()) {
+        XCTContext.runActivity(named: text) { activity in
+            closure(activity)
+        }
+    }
 }

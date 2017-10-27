@@ -19,10 +19,17 @@ class UITestHelperUITests: XCTestCase {
     }
     
     func testAppWaitForElement() {
-        XCTAssert(app.staticTexts["This is a labeRawRepresentablel"].waitUntilExists().exists, "label should exist")
+        XCTAssert(app.staticTexts["This is a label"].waitUntilExists().exists, "label should exist")
         app.staticTexts["This is a label"].waitUntilExistsAssert()
-        app.buttons["Second"].waitUntilExists().tap()
-        app.buttons["Button"].waitUntilExists().tap()
+        group("Testing the switch") { activity in
+            takeScreenshot(activity: activity, "First screenshot")
+            app.buttons["Second"].waitUntilExists().tap()
+            takeScreenshot()
+            app.buttons["Third"].waitUntilExists().tap()
+            takeScreenshot(groupName: "Screenshot group?")
+            app.buttons["Button"].waitUntilExists().tap()
+            takeScreenshot("Last screenshot")
+        }
     }
 
     func testAppTextEntry() {
@@ -37,7 +44,7 @@ class UITestHelperUITests: XCTestCase {
     func testAppConditionalCode() {
         // Only execute the closure if the element is there.
         app.buttons["Button"].ifExists { $0.tap() } // The button exist, so we do tap it
-        app.buttons["Hide"].ifExists { $0.tap() } // The button does not exist, so we don't tap it
+        app.buttons["Hide"].ifExists(2) { $0.tap() } // The button does not exist, so we don't tap it
         
         // Only execute the closure if the element is not there
         app.alerts.buttons["Hide"].ifNotExist(2) {

@@ -1,8 +1,8 @@
 PODS:
-  - UITestHelper (0.2.0):
-    - UITestHelper/Core (= 0.2.0)
-  - UITestHelper/App (0.2.0)
-  - UITestHelper/Core (0.2.0)
+  - UITestHelper (0.3.0):
+    - UITestHelper/Core (= 0.3.0)
+  - UITestHelper/App (0.3.0)
+  - UITestHelper/Core (0.3.0)
 
 DEPENDENCIES:
   - UITestHelper (from `./`)
@@ -10,11 +10,11 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   UITestHelper:
-    :path: "./"
+    :path: ./
 
 SPEC CHECKSUMS:
-  UITestHelper: 8ecbdcd1249e2aeb03a2fe6b7675b294e34a99b8
+  UITestHelper: 57e1d4608eaaf73c11f10aad5928f4ee8679ef8f
 
-PODFILE CHECKSUM: 6ab9d8a6918a6b41f991aa0fe58b967d580da252
+PODFILE CHECKSUM: e269804d43724355c0d938a0f0d4e5c0f7f75276
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.3.1

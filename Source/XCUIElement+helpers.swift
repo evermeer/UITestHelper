@@ -33,7 +33,8 @@ public extension XCUIElement {
         let exists = NSPredicate(format: "exists == 1")
         let test = XCTestCase()
         test.expectation(for: exists, evaluatedWith: self, handler: nil)
-        test.waitForExpectations(timeout: TimeInterval(timeout), handler: nil)
+        test.waitForExpectations(timeout: TimeInterval(timeout), handler: { error in })
+        test.continueAfterFailure = true
         return self
     }
     
@@ -105,7 +106,6 @@ public extension XCUIElement {
      - parameter timeout: The maximum number of seconds that you want to wait. (Default is 10)
      - parameter callback: The function to perform if the element exists
      */
-    @discardableResult
     public func ifExists(_ timeout: Int = 10,_ callback: (_ element: XCUIElement) -> ()) {
         self.waitUntilExists(timeout)
         if self.exists {
@@ -169,7 +169,7 @@ public extension XCUIElement {
     @discardableResult
     public func setSwitch(_ on: Bool, _ timeout: Int = 10) -> XCUIElement  {
         self.waitUntilExists(timeout)
-        if self.elementType == XCUIElementType.switch {
+        if self.elementType == .`switch` {
             if  (!on && "\(self.value ?? "0")" == "1") || (on && "\(self.value ?? "0")" != "1") {
                 self.tap()
             }            

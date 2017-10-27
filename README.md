@@ -42,7 +42,19 @@ target 'UITestHelperUITests' do
     platform :ios, '9.0'
     pod 'UITestHelper'
 end
+
+# This will make sure your test project has ENABLE_BITCODE set to NO 
+post_install do |installer|
+    installer.pods_project.targets.each do |target|
+        if ['UITestHelperUITests'].include? target.name
+            target.build_configurations.each do |config|
+                config.build_settings['ENABLE_BITCODE'] = 'NO'
+            end
+        end
+    end
+end
 ```
+
 
 # Instructions
 
@@ -62,6 +74,29 @@ The tryLaunch function also takes an array of RawRepresentable elements. Usually
     // Somewhere in your application (if you have added the UITestHelper/App pod)
     if isLaunchedWith(LaunchArguments.MockNetworkResponses) {
         // Start the network mocking
+    }
+```
+
+### Grouping your test statements
+
+For getting a clear overvouw in your test output, you can group statements together. Groups can also be nested as far as you like. Starting a group is as easy as:
+
+```swift
+    group("Testing the switch") { activity in
+        // Your test statements here will be grouped nicely in the test output.
+    }
+```
+
+### Taking screenshots
+
+Screenshot will allways be added to an activity group. If you call the takeScreenshot function without parameter, then it will just create a default screenshot group. You can also specify a groupName for when it creates a new group. You can also give the screenshot any name.
+
+```swift
+    group("Testing the switch") { activity in
+        takeScreenshot(activity: activity, "First screenshot")
+        takeScreenshot()
+        takeScreenshot(groupName: "Screenshot group?")
+        takeScreenshot("Last screenshot")
     }
 ```
 
