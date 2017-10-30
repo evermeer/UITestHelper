@@ -18,6 +18,11 @@ class UITestHelperUITests: XCTestCase {
         //self.tryLaunch() // For if you don't need any options at all
     }
     
+    override func tearDown() {
+        tryTearDown()
+        super.tearDown()
+    }
+    
     func testAppWaitForElement() {
         XCTAssert(app.staticTexts["This is a label"].waitUntilExists().exists, "label should exist")
         app.staticTexts["This is a label"].waitUntilExistsAssert()

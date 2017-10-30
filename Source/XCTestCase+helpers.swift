@@ -47,21 +47,34 @@ public extension XCTestCase {
      
      - parameter arguments: An array of RawRepresentable iterms that will be passed on as arguments
      - parameter timeout: The retry counter for trying to startup the app (Default is 10)
+     - parameter wait: The number of seconds to wait. Slower test machines might require a longer wait
      */
-    public func tryLaunch<T>(_ arguments: [T], _ counter: Int = 10) where T: RawRepresentable {
-        sleep(3)
+    public func tryLaunch<T>(_ arguments: [T], _ counter: Int = 10, _ wait: UInt32 = 2) where T: RawRepresentable {
+        sleep(wait)
         XCUIApplication().terminate()
-        sleep(3)
+        sleep(wait)
         
         app = XCUIApplication()
         app.launchArguments = (arguments.map { $0.rawValue as! String })
         app.launch()
-        sleep(3)
+        sleep(wait)
         if !app.exists && counter > 0 {
             tryLaunch(arguments, counter - 1)
         }
     }
 
+    /**
+     Try to force closing the application
+     
+     - parameter wait: The number of seconds to wait. Slower test machines might require a longer wait
+     */
+    func tryTearDown(_ wait: UInt32 = 2) {
+        super.tearDown()
+        sleep(wait)
+        XCUIApplication().terminate()
+        sleep(wait)
+    }
+    
     /**
      Try to force launch the application. This structure tries to ovecome the issues described at https://www.openradar.me/25548393 and https://forums.developer.apple.com/thread/15780
      
