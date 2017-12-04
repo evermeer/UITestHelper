@@ -26,15 +26,15 @@ public extension XCUIElement {
      :return: Return the element iteself
      */
     @discardableResult
-    public func waitUntilExists(_ timeout: Int = 10) -> XCUIElement {
+    public func waitUntilExists(_ timeout: TimeInterval = 10) -> XCUIElement {
         if self.exists {
             return self
         }
-        let exists = NSPredicate(format: "exists == 1")
         let test = XCTestCase()
-        test.expectation(for: exists, evaluatedWith: self, handler: nil)
-        test.waitForExpectations(timeout: TimeInterval(timeout), handler: { error in })
         test.continueAfterFailure = true
+        let predicate = NSPredicate(format: "exists == true")
+        let exp = test.expectation(for: predicate, evaluatedWith: self, handler: nil)
+        XCTWaiter().wait(for: [exp], timeout: timeout)
         return self
     }
     
@@ -46,7 +46,7 @@ public extension XCUIElement {
      :return: Return the element iteself
      */
     @discardableResult
-    public func waitUntilExistsAssert(_ timeout: Int = 10) -> XCUIElement {
+    public func waitUntilExistsAssert(_ timeout: TimeInterval = 10) -> XCUIElement {
         let r = waitUntilExists(timeout)
         XCTAssert(r.exists, "Element should exist: \(r)")
         return r
@@ -106,7 +106,7 @@ public extension XCUIElement {
      - parameter timeout: The maximum number of seconds that you want to wait. (Default is 10)
      - parameter callback: The function to perform if the element exists
      */
-    public func ifExists(_ timeout: Int = 10,_ callback: (_ element: XCUIElement) -> ()) {
+    public func ifExists(_ timeout: TimeInterval = 10,_ callback: (_ element: XCUIElement) -> ()) {
         self.waitUntilExists(timeout)
         if self.exists {
             callback(self)
@@ -120,7 +120,7 @@ public extension XCUIElement {
      - parameter callback: The function to perform if the element does not exists
      */
     @discardableResult
-    public func ifNotExist(_ timeout: Int = 10,_ callback: () -> ()) -> XCUIElement? {
+    public func ifNotExist(_ timeout: TimeInterval = 10,_ callback: () -> ()) -> XCUIElement? {
         self.waitUntilExists(timeout)
         if !self.exists {
             callback()
@@ -136,7 +136,7 @@ public extension XCUIElement {
      - parameter callback: The function to perform if the element does not exists
      */
     @discardableResult
-    public func ifNotExistwaitUntilExists(_ timeout: Int = 10,_ callback: () -> ()) -> XCUIElement {
+    public func ifNotExistwaitUntilExists(_ timeout: TimeInterval = 10,_ callback: () -> ()) -> XCUIElement {
         if self.waitUntilExists(timeout).exists {
             return self
         }
@@ -152,7 +152,7 @@ public extension XCUIElement {
      :return: Return the element iteself
      */
     @discardableResult
-    public func tapAndType(_ text: String, _ timeout: Int = 10) -> XCUIElement {
+    public func tapAndType(_ text: String, _ timeout: TimeInterval = 10) -> XCUIElement {
         self.waitUntilExists(timeout).tap()
         sleep(1) //Wait for keyboard... test?
         self.typeText(text)
@@ -167,7 +167,7 @@ public extension XCUIElement {
      :return: Return the element iteself
      */
     @discardableResult
-    public func setSwitch(_ on: Bool, _ timeout: Int = 10) -> XCUIElement  {
+    public func setSwitch(_ on: Bool, _ timeout: TimeInterval = 10) -> XCUIElement  {
         self.waitUntilExists(timeout)
         if self.elementType == .`switch` {
             if  (!on && "\(self.value ?? "0")" == "1") || (on && "\(self.value ?? "0")" != "1") {
