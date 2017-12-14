@@ -144,5 +144,5 @@ public extension XCTestCase {
 }
 
 public func elementForIdentifier(_ identifier: String) -> XCUIElement {
-    return XCUIApplication().otherElements.element(matching: .any, identifier: identifier).firstMatch
+    return XCUIApplication().descendants(matching: .any).element(matching: .any, identifier: identifier)
 }
