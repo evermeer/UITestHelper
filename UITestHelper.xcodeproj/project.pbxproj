@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04BD278C20BDA7E000BCE56B /* AccessibilityIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BD278B20BDA7E000BCE56B /* AccessibilityIdentifier.swift */; };
+		04BD278D20BDA83400BCE56B /* AccessibilityIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BD278B20BDA7E000BCE56B /* AccessibilityIdentifier.swift */; };
 		45680A7A2E292E74D3037503 /* Pods_UITestHelperApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A465357AD139CC65FFC2A7F6 /* Pods_UITestHelperApp.framework */; };
 		7F75C5281E4536EA003B08C5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F75C5271E4536EA003B08C5 /* AppDelegate.swift */; };
 		7F75C52A1E4536EA003B08C5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F75C5291E4536EA003B08C5 /* ViewController.swift */; };
@@ -30,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04BD278B20BDA7E000BCE56B /* AccessibilityIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessibilityIdentifier.swift; sourceTree = "<group>"; };
 		13D5E72F75F79FB57BF6E1D1 /* Pods-UITestHelperApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UITestHelperApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UITestHelperApp/Pods-UITestHelperApp.debug.xcconfig"; sourceTree = "<group>"; };
 		18BB0B8A63042C713FBAEA73 /* Pods-UITestHelperUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UITestHelperUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-UITestHelperUITests/Pods-UITestHelperUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		38FFA42FA9C58CD307C6A96B /* Pods_UITestHelper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UITestHelper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +104,7 @@
 				7F75C52E1E4536EA003B08C5 /* Assets.xcassets */,
 				7F75C5301E4536EA003B08C5 /* LaunchScreen.storyboard */,
 				7F75C5331E4536EA003B08C5 /* Info.plist */,
+				04BD278B20BDA7E000BCE56B /* AccessibilityIdentifier.swift */,
 			);
 			name = UITestHelperApp;
 			path = UITestHelper;
@@ -151,7 +155,6 @@
 				7F75C5211E4536EA003B08C5 /* Frameworks */,
 				7F75C5221E4536EA003B08C5 /* Resources */,
 				4A410DAFB4591356F1430B13 /* [CP] Embed Pods Frameworks */,
-				ACF9FD65C9F2DB56E12F7BC4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -171,7 +174,6 @@
 				7F75C5351E4536EA003B08C5 /* Frameworks */,
 				7F75C5361E4536EA003B08C5 /* Resources */,
 				4EA955B5E3279F9C25089689 /* [CP] Embed Pods Frameworks */,
-				8B0DA0B6A97D7F77CC3003C1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -302,36 +304,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UITestHelperUITests/Pods-UITestHelperUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8B0DA0B6A97D7F77CC3003C1 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UITestHelperUITests/Pods-UITestHelperUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		ACF9FD65C9F2DB56E12F7BC4 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UITestHelperApp/Pods-UITestHelperApp-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		F152681F3D1B4799EA5EAE04 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -360,6 +332,7 @@
 				7F75C52A1E4536EA003B08C5 /* ViewController.swift in Sources */,
 				7F75C5281E4536EA003B08C5 /* AppDelegate.swift in Sources */,
 				7F75C5491E4544D9003B08C5 /* LaunchArguments.swift in Sources */,
+				04BD278C20BDA7E000BCE56B /* AccessibilityIdentifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,6 +341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F75C53D1E4536EA003B08C5 /* UITestHelperUITests.swift in Sources */,
+				04BD278D20BDA83400BCE56B /* AccessibilityIdentifier.swift in Sources */,
 				7F75C5481E4543A2003B08C5 /* LaunchArguments.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

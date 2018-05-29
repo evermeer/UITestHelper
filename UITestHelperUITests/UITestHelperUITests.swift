@@ -9,6 +9,8 @@
 import XCTest
 import UITestHelper
 
+typealias HomeScreen = AccessibilityIdentifier.HomeScreen
+
 class UITestHelperUITests: XCTestCase {
         
     override func setUp() {
@@ -69,5 +71,10 @@ class UITestHelperUITests: XCTestCase {
         app.switches.element(boundBy: 0).setSwitch(true)
         app.switches.element(boundBy: 0).setSwitch(false)
         app.switches.element(boundBy: 1).setSwitch(true)
+    }
+
+    func testEnumWithIdentifiersReusedForInteractingWithXCUIElement() {
+        HomeScreen.showButton.tap()
+        HomeScreen.hideButton.tap()
     }
 }

@@ -12,7 +12,8 @@ import UITestHelper
 class ViewController: UIViewController {
 
     @IBOutlet weak var hideButton: UIButton!
-    
+    @IBOutlet weak var showButton: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,6 +24,9 @@ class ViewController: UIViewController {
         if isLaunchedWith("NoneEnumOption") {
             
         }
+
+        hideButton.accessibilityIdentifier = AccessibilityIdentifier.HomeScreen.hideButton.rawValue
+        showButton.accessibilityIdentifier = AccessibilityIdentifier.HomeScreen.showButton.rawValue
     }
 
     @IBAction func showButtonTouchUpInside(_ sender: Any) {
