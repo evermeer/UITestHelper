@@ -148,8 +148,8 @@ You can then use all the functions below directly on the enum value
 When creating tests you usually have to take into consideration if an element is accessible or not.  For this various helper functions are created. app will be your launched XCUIApplication. By default this function will wait for a maximum of 10 seconds. This can be changed through a parameter. The waitUntilExists will return the element but it could still be unavailable (.exists = false). If you wan to to an Assert based on that existence. then you can use the .waitUntilExistsAssert function
 
 ```swift
-	XCTAssert(app.staticTexts["This is a label"].waitUntilExists().exists, "label should exist")
     // Using the enum:
+	XCTAssert(HomeScreen.theLabel.waitUntilExists().exists, "label should exist")
 	HomeScreen.theLabel.waitUntilExistsAssert()
     // Or just accessing the elements the old fashioned way:
 	app.buttons["Second"].waitUntilExists().tap()
