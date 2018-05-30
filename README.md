@@ -19,7 +19,7 @@
 
 # General information
 
-When creating UI tests you will see that you are often repeating the same pieces of code. The UITestHelper library will try to limit this code repetition. Besides that there is also functionality to make your code strongly typed.
+When creating UI tests you will see that you are often repeating the same pieces of code. The UITestHelper library will try to limit this code repetition. Besides that there is also functionality to make your code resistant against wrongly typed identifiers.
 
 ## Using UITestHelper in your own App 
 
@@ -100,7 +100,7 @@ Screenshot will allways be added to an activity group. If you call the takeScree
     }
 ```
 
-### Making your code stronly typed
+### Using an enum for identifiers
 UITestHelper has an extension for  RawRepresentalbe so that you can directly get an XCElement from an enum value when you also have set that enum value as the accessibility identifier. For instance you can create a nested enum like this:
 
 ```swift
@@ -122,13 +122,13 @@ In your UIViewControllers you can then set those to the accessibility identifier
 ```swift
 override func viewDidLoad() {
     super.viewDidLoad()
-    theLabel.accessibilityIdentifier = AccessibilityIdentifier.HomeScreen.theLabel.rawValue
-    theTextField.accessibilityIdentifier = AccessibilityIdentifier.HomeScreen.theTextField.rawValue
-    theButton.accessibilityIdentifier = AccessibilityIdentifier.HomeScreen.theButton.rawValue
-    switch1.accessibilityIdentifier = AccessibilityIdentifier.HomeScreen.switch1.rawValue
-    switch2.accessibilityIdentifier = AccessibilityIdentifier.HomeScreen.switch2.rawValue
-    hideButton.accessibilityIdentifier = AccessibilityIdentifier.HomeScreen.hideButton.rawValue
-    showButton.accessibilityIdentifier = AccessibilityIdentifier.HomeScreen.showButton.rawValue
+    theLabel ~~> AccessibilityIdentifier.HomeScreen.theLabel
+    theTextField ~~> AccessibilityIdentifier.HomeScreen.theTextField
+    theButton ~~> AccessibilityIdentifier.HomeScreen.theButton
+    switch1 ~~> AccessibilityIdentifier.HomeScreen.switch1
+    switch2 ~~> AccessibilityIdentifier.HomeScreen.switch2
+    hideButton ~~> AccessibilityIdentifier.HomeScreen.hideButton
+    showButton ~~> AccessibilityIdentifier.HomeScreen.showButton
 }
 ```
 

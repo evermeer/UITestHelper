@@ -30,14 +30,14 @@ class ViewController: UIViewController {
             
         }
 
-        
-        theLabel.accessibilityIdentifier = AccessibilityIdentifier.HomeScreen.theLabel.rawValue
-        theTextField.accessibilityIdentifier = AccessibilityIdentifier.HomeScreen.theTextField.rawValue
-        theButton.accessibilityIdentifier = AccessibilityIdentifier.HomeScreen.theButton.rawValue
-        switch1.accessibilityIdentifier = AccessibilityIdentifier.HomeScreen.switch1.rawValue
-        switch2.accessibilityIdentifier = AccessibilityIdentifier.HomeScreen.switch2.rawValue
-        hideButton.accessibilityIdentifier = AccessibilityIdentifier.HomeScreen.hideButton.rawValue
-        showButton.accessibilityIdentifier = AccessibilityIdentifier.HomeScreen.showButton.rawValue
+        // Setting the accessibility identifiers on the elements
+        theLabel ~~> AccessibilityIdentifier.HomeScreen.theLabel
+        theTextField ~~> AccessibilityIdentifier.HomeScreen.theTextField
+        theButton ~~> AccessibilityIdentifier.HomeScreen.theButton
+        switch1 ~~> AccessibilityIdentifier.HomeScreen.switch1
+        switch2 ~~> AccessibilityIdentifier.HomeScreen.switch2
+        hideButton ~~> AccessibilityIdentifier.HomeScreen.hideButton
+        showButton ~~> AccessibilityIdentifier.HomeScreen.showButton
     }
 
     @IBAction func showButtonTouchUpInside(_ sender: Any) {

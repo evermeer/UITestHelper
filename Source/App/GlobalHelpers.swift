@@ -22,3 +22,16 @@ public func isLaunchedWith<T>(_ setting: T) -> Bool where T: RawRepresentable {
 public func isLaunchedWith(_ setting: String) -> Bool {
     return ProcessInfo.processInfo.arguments.contains(setting)
 }
+
+/**
+ Extension that will save you typing .accessibilityIdentifier and .rawValue all the time.
+ */
+infix operator ~~> 
+public extension UIView {
+    static func ~~> <T>(lhs: UIView, rhs: T) where T: RawRepresentable {
+        if let rv = rhs.rawValue as? String {
+            lhs.accessibilityIdentifier = rv
+        }
+    }
+}
+ 

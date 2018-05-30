@@ -197,13 +197,13 @@
 				TargetAttributes = {
 					7F75C5231E4536EA003B08C5 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = WTH4QGEA23;
+						DevelopmentTeam = 6Z7QY98HTS;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					7F75C5371E4536EA003B08C5 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = WTH4QGEA23;
+						DevelopmentTeam = 6Z7QY98HTS;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 7F75C5231E4536EA003B08C5;
@@ -490,7 +490,7 @@
 			baseConfigurationReference = 13D5E72F75F79FB57BF6E1D1 /* Pods-UITestHelperApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = WTH4QGEA23;
+				DEVELOPMENT_TEAM = 6Z7QY98HTS;
 				INFOPLIST_FILE = UITestHelper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nl.evict.UITestHelper;
@@ -504,7 +504,7 @@
 			baseConfigurationReference = C296AF9CAAD6BA87B1527802 /* Pods-UITestHelperApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = WTH4QGEA23;
+				DEVELOPMENT_TEAM = 6Z7QY98HTS;
 				INFOPLIST_FILE = UITestHelper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nl.evict.UITestHelper;
@@ -517,7 +517,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 18BB0B8A63042C713FBAEA73 /* Pods-UITestHelperUITests.debug.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = WTH4QGEA23;
+				DEVELOPMENT_TEAM = 6Z7QY98HTS;
 				INFOPLIST_FILE = UITestHelperUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nl.evict.UITestHelperUITests;
@@ -532,7 +532,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5DF975904D9582FA4EF9DCA0 /* Pods-UITestHelperUITests.release.xcconfig */;
 			buildSettings = {
-				DEVELOPMENT_TEAM = WTH4QGEA23;
+				DEVELOPMENT_TEAM = 6Z7QY98HTS;
 				INFOPLIST_FILE = UITestHelperUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nl.evict.UITestHelperUITests;

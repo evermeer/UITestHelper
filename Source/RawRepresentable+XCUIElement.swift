@@ -9,28 +9,6 @@ import XCTest
 
 /*
  This extension enables retrieving an XCUIElement from a string enum value that has also been used as accessibility identifier.
-
- Example usage:
-
- // Example enum shared between app development target and app UI testing target (Page Object Pattern).
- // This enum needs to be shared between the main development and UI testing target.
- enum Login: String {
-    case userNameField
-    case passwordField
-    case submitButton
- }
-
- // Use of enum in your app source code:
- userNameField.accessibilityIdentifier = Login.userNameField.rawValue
- passwordField.accessibilityIdentifier = Login.passwordField.rawValue
- submitButton.accessibilityIdentifier = Login.submitButton.rawValue
-
- // Use of enum in your UI test code:
- Login.userNameField.tap()
- Login.passwordField.tap()
- Login.submitButton.tap()
- XCTAssertTrue(Login.submitButton.exists)
-
  */
 public extension RawRepresentable {
 
@@ -41,6 +19,8 @@ public extension RawRepresentable {
         fatalError("Couldn't cast rawValue \(self.rawValue) to String")
     }
 
+    // Forwarding the default XCUIElement functions
+    
     var exists: Bool {
         return element.exists
     }
@@ -104,8 +84,4 @@ public extension RawRepresentable {
     public func setSwitch(_ on: Bool, _ timeout: TimeInterval = 10) -> XCUIElement  {
         return element.setSwitch(on, timeout)
     }
-    
-    
-    
-    
 }
