@@ -11,9 +11,14 @@ import UITestHelper
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var theLabel: UILabel!
+    @IBOutlet weak var theTextField: UITextField!
+    @IBOutlet weak var theButton: UIButton!
+    @IBOutlet weak var switch1: UISwitch!
+    @IBOutlet weak var switch2: UISwitch!
     @IBOutlet weak var hideButton: UIButton!
     @IBOutlet weak var showButton: UIButton!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,6 +30,12 @@ class ViewController: UIViewController {
             
         }
 
+        
+        theLabel.accessibilityIdentifier = AccessibilityIdentifier.HomeScreen.theLabel.rawValue
+        theTextField.accessibilityIdentifier = AccessibilityIdentifier.HomeScreen.theTextField.rawValue
+        theButton.accessibilityIdentifier = AccessibilityIdentifier.HomeScreen.theButton.rawValue
+        switch1.accessibilityIdentifier = AccessibilityIdentifier.HomeScreen.switch1.rawValue
+        switch2.accessibilityIdentifier = AccessibilityIdentifier.HomeScreen.switch2.rawValue
         hideButton.accessibilityIdentifier = AccessibilityIdentifier.HomeScreen.hideButton.rawValue
         showButton.accessibilityIdentifier = AccessibilityIdentifier.HomeScreen.showButton.rawValue
     }

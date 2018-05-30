@@ -10,8 +10,12 @@ import Foundation
 
 //Enum is added to both UITestHelperApp and UITestHelperUITests targets
 enum AccessibilityIdentifier {
-
     enum HomeScreen: String {
+        case theLabel
+        case theTextField
+        case theButton
+        case switch1
+        case switch2
         case showButton
         case hideButton
     }

@@ -22,4 +22,3 @@ public func isLaunchedWith<T>(_ setting: T) -> Bool where T: RawRepresentable {
 public func isLaunchedWith(_ setting: String) -> Bool {
     return ProcessInfo.processInfo.arguments.contains(setting)
 }
-

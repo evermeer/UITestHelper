@@ -19,7 +19,7 @@
 
 # General information
 
-When creating UI tests you will see that you are often repeating the same pieces of code. The UITestHelper library will try to limit this code repetition.
+When creating UI tests you will see that you are often repeating the same pieces of code. The UITestHelper library will try to limit this code repetition. Besides that there is also functionality to make your code strongly typed.
 
 ## Using UITestHelper in your own App 
 
@@ -100,13 +100,58 @@ Screenshot will allways be added to an activity group. If you call the takeScree
     }
 ```
 
+### Making your code stronly typed
+UITestHelper has an extension for  RawRepresentalbe so that you can directly get an XCElement from an enum value when you also have set that enum value as the accessibility identifier. For instance you can create a nested enum like this:
+
+```swift
+enum AccessibilityIdentifier {
+    enum HomeScreen: String {
+        case theLabel
+        case theTextField
+        case theButton
+        case switch1
+        case switch2
+        case showButton
+        case hideButton
+    }
+}
+```
+
+In your UIViewControllers you can then set those to the accessibility identifiers of your elements like this:
+
+```swift
+override func viewDidLoad() {
+    super.viewDidLoad()
+    theLabel.accessibilityIdentifier = AccessibilityIdentifier.HomeScreen.theLabel.rawValue
+    theTextField.accessibilityIdentifier = AccessibilityIdentifier.HomeScreen.theTextField.rawValue
+    theButton.accessibilityIdentifier = AccessibilityIdentifier.HomeScreen.theButton.rawValue
+    switch1.accessibilityIdentifier = AccessibilityIdentifier.HomeScreen.switch1.rawValue
+    switch2.accessibilityIdentifier = AccessibilityIdentifier.HomeScreen.switch2.rawValue
+    hideButton.accessibilityIdentifier = AccessibilityIdentifier.HomeScreen.hideButton.rawValue
+    showButton.accessibilityIdentifier = AccessibilityIdentifier.HomeScreen.showButton.rawValue
+}
+```
+
+Then In your tests you could use these like this:
+
+```swift
+func testEnumWithIdentifiersReusedForInteractingWithXCUIElement() {
+    HomeScreen.showButton.tap()
+    HomeScreen.hideButton.tap()
+}
+```
+
+You can then use all the functions below directly on the enum value
+
 ### Waiting for an element
 
 When creating tests you usually have to take into consideration if an element is accessible or not.  For this various helper functions are created. app will be your launched XCUIApplication. By default this function will wait for a maximum of 10 seconds. This can be changed through a parameter. The waitUntilExists will return the element but it could still be unavailable (.exists = false). If you wan to to an Assert based on that existence. then you can use the .waitUntilExistsAssert function
 
 ```swift
 	XCTAssert(app.staticTexts["This is a label"].waitUntilExists().exists, "label should exist")
-	app.staticTexts["This is a label"].waitUntilExistsAssert()
+    // Using the enum:
+	HomeScreen.theLabel.waitUntilExistsAssert()
+    // Or just accessing the elements the old fashioned way:
 	app.buttons["Second"].waitUntilExists().tap()
 	app.buttons["Button"].waitUntilExists(3).tap()
 ```
@@ -116,8 +161,8 @@ When creating tests you usually have to take into consideration if an element is
 With the .or function you can get one of the 2 elements that does exists. If both do not exists, then the first element will be returned and that .exists will be false. If you would like an assert in that case, then use the .orAssert function.
 
 ```swift
-	app.staticTexts["This is a label"].or(app.textFields["This is a text field"]).tap()
-	app.staticTexts["This is a label"].orAssert(app.textFields["This is a text field"])
+	HomeScreen.theLabel.or(HomeScreen.theTextfield).tap()
+	HoeScreen.theLabel.orAssert(HomeScreen.theTextfield)
 ```
 
 ### Conditional code based on existance
@@ -126,8 +171,8 @@ Execute some code if an element does exists. The default wait time is here also 
 
 ```swift
 	// Only execute the closure if the element is there.
-	app.buttons["Button"].ifExists { $0.tap() } // The button exist, so we do tap it
-	app.buttons["Hide"].ifExists(2) { $0.tap() } // The button does not exist, so we don't tap it
+	HomeScreen.theButton.ifExists { $0.tap() } // The button exist, so we do tap it
+	HomeScreen.hideButton.ifExists(2) { $0.tap() } // The button does not exist, so we don't tap it
 ```
 
 Execute some code if the element does not exists. The default wait time is here also 10 seconds and can be set as a parameter.
@@ -140,8 +185,8 @@ Execute some code if the element does not exists. The default wait time is here 
 
 Execute some code if the element does not exist and assume that after the code the element does exists. In the code below if the Hide button does not exist, then press the show button which will make the Hide button appear and then the hide button will be pressed.
 ```swift
-	app.buttons["Hide"].ifNotExistwaitUntilExists(2) {
-		app.buttons["Show"].waitUntilExists().tap()
+	HomeScreen.hideButton.ifNotExistwaitUntilExists(2) {
+		HomeScreen.showButton.waitUntilExists().tap()
 	}.tap()
 }
 ```
@@ -149,14 +194,14 @@ Execute some code if the element does not exist and assume that after the code t
 ### Enter field in a text field
 Make sure the text field is ther, then tap on it and enter a text.
 ```swift
-	app.textFields["This is a text field"].tapAndType("testing")
+	HomeScreen.theTextField.tapAndType("testing")
 ```
 
 ### Switching a switch on or of
 No matter the current state of the switch, it will be switched to the specified state.
 
 ```swift
-app.switches.element(boundBy: 0).setSwitch(false)
+HomeScreen.switch1.setSwitch(false)
 ```
 
 ## License

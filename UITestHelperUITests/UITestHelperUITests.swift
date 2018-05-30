@@ -26,51 +26,51 @@ class UITestHelperUITests: XCTestCase {
     }
     
     func testAppWaitForElement() {
-        XCTAssert(app.staticTexts["This is a label"].waitUntilExists().exists, "label should exist")
-        app.staticTexts["This is a label"].waitUntilExistsAssert()
+        XCTAssert(HomeScreen.theLabel.waitUntilExists().exists, "label should exist")
+        HomeScreen.theLabel.waitUntilExistsAssert()
         group("Testing the switch") { activity in
             takeScreenshot(activity: activity, "First screenshot")
             app.buttons["Second"].waitUntilExists().tap()
             takeScreenshot()
             app.buttons["Third"].waitUntilExists().tap()
             takeScreenshot(groupName: "Screenshot group?")
-            app.buttons["Button"].waitUntilExists().tap()
+            HomeScreen.theButton.waitUntilExists().tap()
             takeScreenshot("Last screenshot")
         }
     }
 
     func testAppTextEntry() {
-        app.textFields["This is a text field"].tapAndType("testing")
+        HomeScreen.theTextField.tapAndType("testing")
     }
     
     func testAppOneOfTheseShouldExist() {
-        app.staticTexts["This is a label"].or(app.textFields["This is a text field"]).tap()
-        app.staticTexts["This is a label"].orAssert(app.textFields["This is a text field"])
+        HomeScreen.theLabel.or(HomeScreen.theTextField).tap()
+        HomeScreen.theLabel.orAssert(HomeScreen.theTextField)
     }
     
     func testAppConditionalCode() {
         // Only execute the closure if the element is there.
-        app.buttons["Button"].ifExists { $0.tap() } // The button exist, so we do tap it
-        app.buttons["Hide"].ifExists(2) { $0.tap() } // The button does not exist, so we don't tap it
+        HomeScreen.theButton.ifExists { $0.tap() } // The button exist, so we do tap it
+        HomeScreen.hideButton.ifExists(2) { $0.tap() } // The button does not exist, so we don't tap it
         
         // Only execute the closure if the element is not there
-        app.alerts.buttons["Hide"].ifNotExist(2) {
+        HomeScreen.hideButton.ifNotExist(2) {
             app.buttons["Third"].waitUntilExists().tap()
         }
 
         // Only execute the closure if the element is not there and then continue assuming it's there.
-        app.buttons["Hide"].ifNotExistwaitUntilExists(2) {
-            app.buttons["Show"].waitUntilExists().tap()
+        HomeScreen.hideButton.ifNotExistwaitUntilExists(2) {
+            HomeScreen.showButton.waitUntilExists().tap()
         }.tap()
         sleep(3)
     }
     
     func testAppSwitches() {
-        app.switches.element(boundBy: 0).setSwitch(false)
-        app.switches.element(boundBy: 1).setSwitch(false)
-        app.switches.element(boundBy: 0).setSwitch(true)
-        app.switches.element(boundBy: 0).setSwitch(false)
-        app.switches.element(boundBy: 1).setSwitch(true)
+        HomeScreen.switch1.setSwitch(false)
+        HomeScreen.switch2.setSwitch(false)
+        HomeScreen.switch1.setSwitch(true)
+        HomeScreen.switch1.setSwitch(false)
+        HomeScreen.switch2.setSwitch(true)
     }
 
     func testEnumWithIdentifiersReusedForInteractingWithXCUIElement() {

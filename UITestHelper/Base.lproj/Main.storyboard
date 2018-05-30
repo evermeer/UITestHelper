@@ -108,6 +108,11 @@
                     <connections>
                         <outlet property="hideButton" destination="sos-2W-5bQ" id="fV6-dV-nJM"/>
                         <outlet property="showButton" destination="dsd-GY-ubC" id="m9e-0h-xHD"/>
+                        <outlet property="switch1" destination="igM-xO-C8s" id="gd1-NN-Ws3"/>
+                        <outlet property="switch2" destination="vep-ft-aQA" id="hqS-vU-vc5"/>
+                        <outlet property="theButton" destination="UtK-hd-MpJ" id="wQ0-ei-IzF"/>
+                        <outlet property="theLabel" destination="y08-oD-rhA" id="Vsr-SN-s7e"/>
+                        <outlet property="theTextField" destination="t4V-XM-Ddd" id="ltZ-nm-9Gl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
