@@ -172,12 +172,13 @@ Execute some code if an element does exists. The default wait time is here also 
 ```swift
 	// Only execute the closure if the element is there.
 	HomeScreen.theButton.ifExists { $0.tap() } // The button exist, so we do tap it
-	HomeScreen.hideButton.ifExists(2) { $0.tap() } // The button does not exist, so we don't tap it
+	HomeScreen.hideButton.ifExists(2) { $0.tap() } 
 ```
 
 Execute some code if the element does not exists. The default wait time is here also 10 seconds and can be set as a parameter.
 
 ```swift
+    // The button does not exist, so we don't tap it, we do something else
 	app.alerts.buttons["Hide"].ifNotExist(2) {
 		app.buttons["Third"].waitUntilExists().tap()
 	}
