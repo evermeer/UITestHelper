@@ -31,7 +31,7 @@ public extension RawRepresentable {
     // functions for making it enumerable
     
     var count: Int {
-        return query.count
+        return Int(query.count)
     }
     
     subscript(i: Int) -> XCUIElement {
