@@ -69,7 +69,7 @@ class UITestHelperUITests: XCTestCase {
         HomeScreen.switch1.setSwitch(false)
         HomeScreen.switch2.setSwitch(false)
         HomeScreen.switch1.setSwitch(true)
-        HomeScreen.switch1[0].setSwitch(false) // can also specify to get the first element. 
+        HomeScreen.switch1[0].setSwitch(false) // can also specify to get the first element.
         HomeScreen.switch2.setSwitch(true)
     }
 

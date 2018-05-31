@@ -14,7 +14,7 @@ public extension RawRepresentable {
 
     var element: XCUIElement {
         let qry = query
-        if qry.count != 1 {
+        if qry.count > 1 {
             fatalError("There are \(qry.count) elements with identifier \(self.rawValue as? String ?? "") found!")
         }
         return qry.firstMatch
@@ -28,11 +28,16 @@ public extension RawRepresentable {
         fatalError("Couldn't cast rawValue \(self.rawValue) to String")
     }
     
+    // functions for making it enumerable
+    
     var count: Int {
         return query.count
     }
     
     subscript(i: Int) -> XCUIElement {
+        if i < 0 || i >= query.count {
+            fatalError("Index \(i) falls out of range [0..\(query.count - 1)")
+        }
         return query.allElementsBoundByIndex[i]
     }
     
