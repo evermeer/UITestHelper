@@ -143,6 +143,6 @@ public extension XCTestCase {
     }
 }
 
-public func elementForIdentifier(_ identifier: String) -> XCUIElement {
-    return XCUIApplication().descendants(matching: .any).element(matching: .any, identifier: identifier)
+public func queryForIdentifier(_ identifier: String) -> XCUIElementQuery {
+    return XCUIApplication().descendants(matching: .any).matching(identifier: identifier)
 }

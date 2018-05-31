@@ -141,6 +141,15 @@ func testEnumWithIdentifiersReusedForInteractingWithXCUIElement() {
 }
 ```
 
+When identifiers are reused for instance when using a collection or table, then you can also enumerate your enum element.
+
+```swift
+    // pressing the last theButton
+    let i = HomeScreen.theButton.count 
+    HomeScreen.theButton[i - 1].tap()
+}
+```
+
 You can then use all the functions below directly on the enum value
 
 ### Waiting for an element

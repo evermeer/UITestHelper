@@ -13,12 +13,29 @@ import XCTest
 public extension RawRepresentable {
 
     var element: XCUIElement {
+        let qry = query
+        if qry.count != 1 {
+            fatalError("There are \(qry.count) elements with identifier \(self.rawValue as? String ?? "") found!")
+        }
+        return qry.firstMatch
+    }
+
+    var query: XCUIElementQuery {
         if let identifier = self.rawValue as? String {
-            return elementForIdentifier(identifier).firstMatch
+            let qry = queryForIdentifier(identifier)
+            return qry
         }
         fatalError("Couldn't cast rawValue \(self.rawValue) to String")
     }
-
+    
+    var count: Int {
+        return query.count
+    }
+    
+    subscript(i: Int) -> XCUIElement {
+        return query.allElementsBoundByIndex[i]
+    }
+    
     // Forwarding the default XCUIElement functions
     
     var exists: Bool {
