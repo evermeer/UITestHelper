@@ -26,12 +26,10 @@ public func isLaunchedWith(_ setting: String) -> Bool {
 /**
  Extension that will save you typing .accessibilityIdentifier and .rawValue all the time.
  */
-infix operator ~~> 
-public extension UIView {
-    static func ~~> <T>(lhs: UIView, rhs: T) where T: RawRepresentable {
+infix operator ~~>
+public  func ~~> <T>(lhs: UIAccessibilityIdentification, rhs: T) where T: RawRepresentable {
         if let rv = rhs.rawValue as? String {
             lhs.accessibilityIdentifier = rv
         }
-    }
 }
  
