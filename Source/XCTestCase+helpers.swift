@@ -25,7 +25,7 @@ public extension XCTestCase {
     /**
      Always have an app property available without the need to start a XCUIApplication
      */
-    public var app: XCUIApplication {
+    var app: XCUIApplication {
         get {
             var a: XCUIApplication? = objc_getAssociatedObject(self, &EVReflectableStatusesObjectKey) as? XCUIApplication
             if let a = a {
@@ -49,7 +49,7 @@ public extension XCTestCase {
      - parameter timeout: The retry counter for trying to startup the app (Default is 10)
      - parameter wait: The number of seconds to wait. Slower test machines might require a longer wait
      */
-    public func tryLaunch<T>(_ arguments: [T], _ counter: Int = 10, _ wait: UInt32 = 2) where T: RawRepresentable {
+    func tryLaunch<T>(_ arguments: [T], _ counter: Int = 10, _ wait: UInt32 = 2) where T: RawRepresentable {
         sleep(wait)
         XCUIApplication().terminate()
         sleep(wait)
@@ -80,7 +80,7 @@ public extension XCTestCase {
      
      - parameter timeout: The retry counter for trying to startup the app (Default is 10)
      */
-    public func tryLaunch(_ counter: Int = 10) {
+    func tryLaunch(_ counter: Int = 10) {
         sleep(3)
         XCUIApplication().terminate()
         sleep(3)
@@ -99,7 +99,7 @@ public extension XCTestCase {
      
      :return: True if the tests run in the simmulator
      */
-    public func isSimulator() -> Bool {
+    func isSimulator() -> Bool {
         return TARGET_OS_SIMULATOR != 0
     }
     
@@ -108,14 +108,14 @@ public extension XCTestCase {
      
      :return: True if the tests run on an iPad
      */
-    public func isTablet() -> Bool {
+    func isTablet() -> Bool {
         return UIDevice.current.userInterfaceIdiom != UIUserInterfaceIdiom.phone
     }
 
     /**
      Take a screenshot and attach it to the specified or a new activity
      */
-    public func takeScreenshot(activity: XCTActivity, _ name: String = "Screenshot") {
+    func takeScreenshot(activity: XCTActivity, _ name: String = "Screenshot") {
         let screen: XCUIScreen = XCUIScreen.main
         let fullscreenshot: XCUIScreenshot = screen.screenshot()
         let fullScreenshotAttachment: XCTAttachment = XCTAttachment(screenshot: fullscreenshot)
@@ -127,7 +127,7 @@ public extension XCTestCase {
     /**
      Take a screenshot and attach it to the specified or a new activity
      */
-    public func takeScreenshot(groupName: String = "--- Screenshot ---", _ name: String = "Screenshot") {
+    func takeScreenshot(groupName: String = "--- Screenshot ---", _ name: String = "Screenshot") {
         group(groupName) { (activity) in
             takeScreenshot(activity: activity, name)
         }
@@ -136,7 +136,7 @@ public extension XCTestCase {
     /**
      A simple wrapper around creating an activity for grouping your test statements.
      */
-    public func group(_ text: String = "Group", closure: (_ activity: XCTActivity)-> ()) {
+    func group(_ text: String = "Group", closure: (_ activity: XCTActivity)-> ()) {
         XCTContext.runActivity(named: text) { activity in
             closure(activity)
         }
